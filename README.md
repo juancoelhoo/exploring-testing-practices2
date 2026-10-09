@@ -46,16 +46,38 @@ Para cada repositório, escolha uma prática ou dado de teste relevante e expliq
 
 ### Repositório 1 
 
-Repositório: `<URL_DO_REPOSITÓRIO>`
-
-URL TestMiner: `<URL_NO_TESTMINER>`
-
-Explicação: `<SUA_EXPLICAÇÃO>`
+Repositório: https://github.com/pallets/flask
+URL TestMiner: https://andrehora.github.io/testminer/#pallets/flask
+Explicação: O Flask mantém a maior parte de seus testes em um diretório próprio,
+tests, separado do código da biblioteca, que fica em src/flask. Um dado que
+notei no TestMiner é a distinção entre arquivos de teste e arquivos
+auxiliares porque, na versão analisada, a ferramenta classificou 36 arquivos como
+testes e 35 como test helpers. Entre esses auxiliares existem modelos HTML,
+arquivos de configuração e outros dados usados durante a execução dos testes.
+Essa organização evita repetir a preparação de cenários em cada caso de teste e
+deixa as verificações mais focadas no comportamento esperado. O repositório
+também tem exemplos com seus próprios testes, ajudando a validar não só a
+biblioteca principal, mas também a forma recomendada de a utilizar. Como o
+TestMiner classifica os arquivos automaticamente a partir de seus nomes e
+caminhos, esses números devem ser entendidos como uma visão geral da estrutura,
+e não como a quantidade exata de funções de teste executadas.
 
 ### Repositório 2
 
-Repositório: `<URL_DO_REPOSITÓRIO>`
-
-URL TestMiner: `<URL_NO_TESTMINER>`
-
-Explicação: `<SUA_EXPLICAÇÃO>`
+Repositório: https://github.com/pallets/itsdangerous
+URL TestMiner: https://andrehora.github.io/testminer/#pallets/itsdangerous
+Explicação: O ItsDangerous é uma biblioteca pequena para assinar dados de forma
+segura. Na versão analisada, o TestMiner identificou cinco módulos de teste no
+diretório tests/test_itsdangerous: test_encoding.py, test_serializer.py,
+test_signer.py, test_timed.py e test_url_safe.py. Essa divisão demonstra
+uma prática importante: organizar a suíte de acordo com as responsabilidades
+do sistema. Assim, os testes de codificação, serialização, assinatura, validade
+por tempo e geração de valores seguros para URL ficam separados, facilitando a
+localização de falhas e a manutenção da suíte. A ferramenta também identificou
+o arquivo .github/workflows/tests.yaml, indicando que os testes fazem parte
+da integração contínua e podem ser executados automaticamente a cada mudança.
+Embora seja um projeto bem menor, ele mantém testes para seus principais
+comportamentos, algo especialmente relevante em uma biblioteca relacionada à
+segurança e à integridade de dados. As quantidades apresentadas são resultado
+da classificação automática do TestMiner e não representam o número de funções
+ou cenários executados dentro de cada arquivo.
